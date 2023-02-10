@@ -13,8 +13,7 @@ const socketio = require('socket.io');
 var app = express();
 var app2 = express();
 const server = http.createServer(app2);      //for chat 
-const io = require("socket.io")(server, { origin: ":" });
-
+const io = socketio(server);    //for chat
 app.listen(9000);
 
 const messages = [];
@@ -47,7 +46,7 @@ mongoose.connect(dbURI);
 //use
 
 app.use(express.json());
-app.use(cors({credentials: true, origin: 'https://2973-103-174-84-61.au.ngrok.io'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(cookieParser());
 
 
